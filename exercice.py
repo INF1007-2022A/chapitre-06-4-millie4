@@ -8,19 +8,24 @@ import itertools
 
 
 def get_even_keys(dictionary):
-	return {}
+	return set([n for n in dictionary if n%2 == 0 ])
 
 def join_dictionaries(dictionaries):
-	return {}
+	dict_resultant = {}
+	for n in range(len(dictionaries)):
+		dict_resultant.update(dictionaries[n])
+	return dict_resultant
 
 def dictionary_from_lists(keys, values):
-	return {}
+	return {keys[n]:values[n] for n in range(min(len(keys), len(values)))}
 
 def get_greatest_values(dictionnary, num_values):
-	return []
+	valeurs = [dictionnary[n] for n in dictionnary]
+	valeurs.sort(reverse=True)
+	return valeurs[:num_values]
 
 def get_sum_values_from_key(dictionnaries, key):
-	return 0
+	return sum([n[key] for n in dictionnaries if key in n])
 
 
 if __name__ == "__main__":
@@ -28,6 +33,8 @@ if __name__ == "__main__":
 		69: "Yeet",
 		420: "YeEt",
 		9000: "YEET",
+		321: "yeET",
+		490: "yEet"
 	}
 	print(get_even_keys(yeet))
 	print()
